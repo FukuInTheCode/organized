@@ -7,6 +7,17 @@
 
 #include "my.h"
 
+static int print_del(my_item_t *i)
+{
+    write(1, i->type, my_strlen(i->type));
+    write(1, " n°", 4);
+    my_put_nbr(i->id);
+    write(1, " - \"", 4);
+    write(1, i->name, my_strlen(i->name));
+    write(1, "\" deleted.\n", 11);
+    return 0;
+}
+
 int del_el(my_item_t **list, uint32_t id)
 {
     my_item_t *previous = NULL;
@@ -17,6 +28,7 @@ int del_el(my_item_t **list, uint32_t id)
             current = current->next;
             continue;
         }
+        print_del(current);
         if (previous == NULL)
             *list = current->next;
         if (previous != NULL)

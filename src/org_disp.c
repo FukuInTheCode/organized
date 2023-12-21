@@ -13,7 +13,7 @@ int disp(void *data, char **args)
         return 84;
     for (my_item_t *list = *(my_item_t **)data; list; list = list->next) {
         write(1, list->type, my_strlen(list->type));
-        write(1, " n'", 3);
+        write(1, " n°", 4);
         my_put_nbr(list->id);
         write(1, " - \"", 4);
         write(1, list->name, my_strlen(list->name));
