@@ -69,11 +69,26 @@ void quick_sort(my_item_t *first, my_item_t *last, char **args)
         quick_sort(first, pivot, args);
 }
 
+static bool check_args(char **args)
+{
+    if (!*args)
+        return false;
+    for (int i = 0; args[i]; i++) {
+        if (my_strcmp(args[i], "NAME") && my_strcmp(args[i], "ID")
+            && my_strcmp(args[i], "TYPE"))
+            return false;
+        if (!args[i + 1])
+            continue;
+        i += (my_strcmp(args[i + 1], "-r") == 0);
+    }
+    return true;
+}
+
 int sort(void *data, char **args)
 {
     my_item_t **list = data;
 
-    if (!*args)
+    if (!check_args(args))
         return 84;
     quick_sort(*list, last_node(*list), args);
     return 0;
