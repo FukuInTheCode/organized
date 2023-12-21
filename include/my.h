@@ -47,7 +47,7 @@ int my_strcmp(char const *, char const *);
 char *my_strcpy(char *, char const *);
 char *my_strdup(char const *);
 int add_el(my_item_t **, char const *, char const *);
-int del_el(my_item_t **, uint32_t);
+int del_el(my_item_t **, uint32_t, bool);
 int my_put_nbr(int);
 int my_getnbr(char const *);
 int sort_list(my_item_t **, func cmp);

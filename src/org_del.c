@@ -22,7 +22,7 @@ int del(void *data, char **args)
     for (int i = 0; args[i]; i++) {
         if (!is_num(args[i]))
             return 84;
-        if (del_el(data, my_getnbr(args[i])))
+        if (del_el(data, my_getnbr(args[i]), true))
             return 84;
     }
     return 0;

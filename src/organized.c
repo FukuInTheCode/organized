@@ -9,7 +9,7 @@
 
 static int free_list(my_item_t **items)
 {
-    for (; *items; del_el(items, (*items)->id));
+    for (; *items; del_el(items, (*items)->id, false));
     return 0;
 }
 
