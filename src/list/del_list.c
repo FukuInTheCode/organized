@@ -18,6 +18,14 @@ static int print_del(my_item_t *i)
     return 0;
 }
 
+static int free_node(my_item_t *current)
+{
+    free(current->name);
+    free(current->type);
+    free(current);
+    return 0;
+}
+
 int del_el(my_item_t **list, int id, bool print)
 {
     my_item_t *previous = NULL;
@@ -33,9 +41,7 @@ int del_el(my_item_t **list, int id, bool print)
             *list = current->next;
         if (previous != NULL)
             previous->next = current->next;
-        free(current->name);
-        free(current->type);
-        free(current);
+        free_node(current);
         current = (previous == NULL) ? *list : previous->next;
         return 0;
     }
