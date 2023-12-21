@@ -36,7 +36,7 @@
 typedef int(*func)();
 
 typedef struct item {
-    uint32_t id;
+    int id;
     char *type;
     char *name;
     struct item *next;
@@ -47,7 +47,7 @@ int my_strcmp(char const *, char const *);
 char *my_strcpy(char *, char const *);
 char *my_strdup(char const *);
 int add_el(my_item_t **, char const *, char const *);
-int del_el(my_item_t **, uint32_t, bool);
+int del_el(my_item_t **, int, bool);
 int my_put_nbr(int);
 int my_getnbr(char const *);
 int sort_list(my_item_t **, func cmp);
