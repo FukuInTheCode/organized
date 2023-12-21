@@ -28,8 +28,7 @@ int del_el(my_item_t **list, uint32_t id, bool print)
             current = current->next;
             continue;
         }
-        if (print)
-            print_del(current);
+        print && print_del(current);
         if (previous == NULL)
             *list = current->next;
         if (previous != NULL)

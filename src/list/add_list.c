@@ -9,9 +9,10 @@
 
 static uint32_t find_id(my_item_t *next)
 {
-    if (!next)
-        return 0;
-    return next->id + 1;
+    static int next_id = -1;
+
+    next_id += 1;
+    return next_id;
 }
 
 int add_el(my_item_t **list, char const *type, char const *name)
