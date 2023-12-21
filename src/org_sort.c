@@ -43,7 +43,6 @@ my_item_t *partition(my_item_t *first, my_item_t *last, char **args)
 {
     my_item_t *pivot = first;
     my_item_t *front = first;
-    int temp = 0;
 
     while (front != NULL && front != last) {
         if (my_cmp(front, last, args) < 0) {

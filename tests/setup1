@@ -1,1 +1,5 @@
 add WIRE a WIRE b WIRE c WIRE d WIRE e
+disp
+sort NAME
+disp
+exit
