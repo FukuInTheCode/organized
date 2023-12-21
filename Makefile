@@ -10,7 +10,7 @@ NAME   = organized
 CC	   = gcc
 
 CFLAGS = -Wall -Wextra -Wno-unused-value -Wno-sign-compare \
-	-Wno-unused-parameter -I./include -g -L./lib/ -lshell
+	-Wno-unused-parameter -I./include -g -L./shell/ -lshell
 
 CSFML = -lcsfml-system -lcsfml-window -lcsfml-network \
 			-lcsfml-graphics -lcsfml-audio

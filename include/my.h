@@ -31,7 +31,7 @@
     #include <SFML/System.h>
     #include <SFML/Window.h>
     #define GETNBR_CHECK (is_int_stred(str[i]) || is_sign_stred(str[i]))
-    #include "shell.h"
+    #include "../shell/shell.h"
 
 typedef struct item {
     uint32_t id;

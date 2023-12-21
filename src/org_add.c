@@ -31,6 +31,6 @@ int add(void *data, char **args)
             append(data, args[i], args[i + 1]))
             return 84;
         i++;
-     }
+    }
     return 0;
 }
