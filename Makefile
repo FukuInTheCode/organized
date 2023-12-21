@@ -27,7 +27,9 @@ SRC	= src/organized.c \
 	  src/my_strcpy.c \
 	  src/my_strcmp.c \
 	  src/list/add_list.c \
+	  src/list/del_list.c \
 	  src/my_put_nbr.c \
+	  src/my_getnbr.c \
 
 OBJ	= $(SRC:.c=.o)
 

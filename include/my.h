@@ -30,6 +30,7 @@
     #include <SFML/OpenGL.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
+    #define GETNBR_CHECK (is_int_stred(str[i]) || is_sign_stred(str[i]))
     #include "shell.h"
 
 typedef struct item {
@@ -44,5 +45,7 @@ int my_strcmp(char const *, char const *);
 char *my_strcpy(char *, char const *);
 char *my_strdup(char const *);
 int add_el(my_item_t **, char const *, char const *);
+int del_el(my_item_t **, uint32_t);
 int my_put_nbr(int);
+int my_getnbr(char const *);
 #endif
