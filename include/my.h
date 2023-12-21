@@ -33,6 +33,8 @@
     #define GETNBR_CHECK (is_int_stred(str[i]) || is_sign_stred(str[i]))
     #include "../shell/shell.h"
 
+typedef int(*func)();
+
 typedef struct item {
     uint32_t id;
     char *type;
@@ -48,4 +50,6 @@ int add_el(my_item_t **, char const *, char const *);
 int del_el(my_item_t **, uint32_t);
 int my_put_nbr(int);
 int my_getnbr(char const *);
+int sort_list(my_item_t **, func cmp);
+int my_cmp_name(my_item_t *a, my_item_t *b);
 #endif
