@@ -32,17 +32,9 @@
     #include <SFML/Window.h>
     #include "shell.h"
 
-typedef enum {
-    WIRE,
-    ACTUATOR,
-    DEVICE,
-    PROCESSOR,
-    SENSOR
-} my_type_t;
-
 typedef struct item {
     uint32_t id;
-    my_type_t type;
+    char *type;
     char *name;
     struct item *next;
 } my_item_t;
@@ -51,4 +43,6 @@ size_t my_strlen(char const *);
 int my_strcmp(char const *, char const *);
 char *my_strcpy(char *, char const *);
 char *my_strdup(char const *);
+int add_el(my_item_t **, char const *, char const *);
+int my_put_nbr(int);
 #endif
