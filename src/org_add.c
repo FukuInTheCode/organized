@@ -12,7 +12,7 @@ static int append(my_item_t **list, char const *type, char const *name)
     if (add_el(list, type, name))
         return 84;
     write(1, (*list)->type, my_strlen((*list)->type));
-    write(1, " n°", 3);
+    write(1, " n'", 3);
     my_put_nbr((*list)->id);
     write(1, " - \"", 4);
     write(1, (*list)->name, my_strlen((*list)->name));
