@@ -16,7 +16,7 @@ static int my_cmp(my_item_t *a, my_item_t *b, char **args)
     if (!my_strcmp(*args, "NAME"))
         cmp_value = my_strcmp(a->name, b->name);
     if (!my_strcmp(*args, "ID"))
-        cmp_value = b->id - a->id;
+        cmp_value = a->id - b->id;
     if (!my_strcmp(*args, "TYPE"))
         cmp_value = my_strcmp(a->type, b->type);
     args++;
@@ -30,17 +30,13 @@ static int my_cmp(my_item_t *a, my_item_t *b, char **args)
     return cmp_value;
 }
 
-my_item_t *last_node(my_item_t *head)
+static my_item_t *last_node(my_item_t *head)
 {
-    my_item_t *temp = head;
-
-    while (temp != NULL && temp->next != NULL) {
-        temp = temp->next;
-    }
-    return temp;
+    for (; head && head->next; head = head->next);
+    return head;
 }
 
-int my_swap(my_item_t *a, my_item_t *b)
+static int my_swap(my_item_t *a, my_item_t *b)
 {
     void *tmp = NULL;
     int tmp_id = 0;
@@ -57,34 +53,34 @@ int my_swap(my_item_t *a, my_item_t *b)
     return 0;
 }
 
-my_item_t *partition(my_item_t *first, my_item_t *last, char **args)
+static my_item_t *partition(my_item_t *first, my_item_t *last, char **args)
 {
     my_item_t *pivot = first;
     my_item_t *front = first;
 
-    while (front != NULL && front != last) {
+    for (; front && front != last; front = front->next) {
         if (my_cmp(front, last, args) < 0) {
             pivot = first;
             my_swap(first, front);
             first = first->next;
         }
-        front = front->next;
     }
     my_swap(first, last);
     return pivot;
 }
 
-void quick_sort(my_item_t *first, my_item_t *last, char **args)
+static int quick_sort(my_item_t *first, my_item_t *last, char **args)
 {
     my_item_t *pivot = NULL;
 
     if (first == last)
-        return;
+        return 0;
     pivot = partition(first, last, args);
-    if (pivot != NULL && pivot->next != NULL)
+    if (pivot && pivot->next)
         quick_sort(pivot->next, last, args);
-    if (pivot != NULL && first != pivot)
+    if (pivot && first != pivot)
         quick_sort(first, pivot, args);
+    return 0;
 }
 
 static bool check_args(char **args)
@@ -108,6 +104,5 @@ int sort(void *data, char **args)
 
     if (!check_args(args))
         return 84;
-    quick_sort(*list, last_node(*list), args);
-    return 0;
+    return quick_sort(*list, last_node(*list), args);
 }
