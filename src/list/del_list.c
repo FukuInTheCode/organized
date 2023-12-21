@@ -22,7 +22,7 @@ int del_el(my_item_t **list, uint32_t id, bool print)
 {
     my_item_t *previous = NULL;
 
-    for (my_item_t *current = *list; current != NULL;) {
+    for (my_item_t *current = *list; current;) {
         if (current->id != id) {
             previous = current;
             current = current->next;
@@ -37,6 +37,7 @@ int del_el(my_item_t **list, uint32_t id, bool print)
         free(current->type);
         free(current);
         current = (previous == NULL) ? *list : previous->next;
+        return 0;
     }
-    return 0;
+    return 84;
 }
