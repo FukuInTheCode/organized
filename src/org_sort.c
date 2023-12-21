@@ -9,7 +9,25 @@
 
 static int my_cmp(my_item_t *a, my_item_t *b, char **args)
 {
-    return my_strcmp(a->name, b->name);
+    int cmp_value = 0;
+
+    if (!*args)
+        return cmp_value;
+    if (!my_strcmp(*args, "NAME"))
+        cmp_value = my_strcmp(a->name, b->name);
+    if (!my_strcmp(*args, "ID"))
+        cmp_value = b->id - a->id;
+    if (!my_strcmp(*args, "TYPE"))
+        cmp_value = my_strcmp(a->type, b->type);
+    args++;
+    if (*args && !my_strcmp(*args, "-r")) {
+        args++;
+        if (cmp_value)
+            cmp_value *= -1;
+    }
+    if (!cmp_value)
+        cmp_value = my_cmp(a, b, args);
+    return cmp_value;
 }
 
 my_item_t *last_node(my_item_t *head)
